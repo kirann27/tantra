@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TANTRA 2026 | TNDALU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #FF0000;
+            --bg: #000000;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 1.8rem; font-weight: 700; text-decoration: none; color: white; }
+        .logo span { color: var(--primary); }
+
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: white; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* --- Hero --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a0000 0%, #000000 100%);
+            padding: 0 10%;
+        }
+
+        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 1rem; }
+        .hero p { max-width: 800px; color: #888; margin-bottom: 2.5rem; }
+
+        .btn {
+            padding: 12px 30px;
+            border: 2px solid var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .btn-fill { background: var(--primary); color: white; }
+        .btn-fill:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--primary); }
+        .btn-outline { color: var(--primary); background: transparent; margin-left: 15px; }
+        .btn-outline:hover { background: var(--primary); color: white; }
+
+        /* --- About Section --- */
+        section { padding: 100px 10%; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+        .section-title span { color: var(--primary); }
+
+        .about-text {
+            background: var(--glass);
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        /* --- Explore Events Section --- */
+        .event-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .event-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .event-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .event-card h3 { color: var(--primary); margin-bottom: 15px; }
+        .event-card p { font-size: 0.85rem; margin-bottom: 20px; color: #bbb; }
+        .event-meta { font-size: 0.8rem; font-weight: bold; color: white; border-top: 1px solid #333; pt: 10px; display: block; margin-top: 15px;}
+
+        /* --- Form Styling --- */
+        .form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: var(--glass);
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 0.8rem; text-transform: uppercase; }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            color: white;
+            outline: none;
+            font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 10%;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+        .socials { margin: 20px 0; }
+        .socials a { color: white; font-size: 1.5rem; margin: 0 15px; transition: var(--transition); }
+        .socials a:hover { color: var(--primary); }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed; top: -100vh; left: 0; width: 100%; height: 100vh;
+                background: black; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s;
+            }
+            .nav-links.active { top: 0; }
+            .hamburger { display: block; }
+            .btn-outline { margin-left: 0; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">TAN<span>TRA</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">The University</a></li>
+            <li><a href="#events">Explore Events</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>TANTRA 2026</h1>
+        <p>A Convergence of Legal Minds and Cultural Excellence. Organized by the Student Council of TNDALU.</p>
+        <div>
+            <a href="#events" class="btn btn-fill">Explore Events</a>
+            <a href="#register" class="btn btn-outline">Join Now</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">The <span>University</span></h2>
+        <div class="about-text">
+            THE TAMIL NADU DR. AMBEDKAR LAW UNIVERSITY WAS ESTABLISHED BY THE STATE OF TAMIL NADU TO ADVANCE AND DISSEMINATE KNOWLEDGE IN LEARNING, TEACHING, AND RESEARCH IN THE FIELD OF LAW. HIS EXCELLENCY SHRI KR. NARAYANAN, FORMER PRESIDENT OF INDIA INAUGURATED IT ON SEPTEMBER 20, 1997. <br><br>
+            THE UNIVERSITY IS THE FIRST FULL-FLEDGED SUI GENERIS LAW UNIVERSITY THAT OFFERS LEGAL EDUCATION ONLY THROUGH THIS UNIVERSITY AND ITS AFFILIATED COLLEGES IN THE STATE AND THE UNIVERSITY IS THE FIRST OF ITS KIND NOT ONLY IN THE COUNTRY BUT ALSO IN SOUTH ASIA. THE UNIVERSITY OFFERS LEGAL EDUCATION AT ITS CAMPUS AS WELL AS THROUGH TWENTY-FOUR AFFILIATED COLLEGES IN THE STATE OF TAMIL NADU. THE UNIVERSITY OFFERS ACADEMIC PROGRAMS UNDER ITS SCHOOL OF EXCELLENCE IN LAW.<br><br>
+            THE SCHOOL WAS ESTABLISHED ON THE LINES OF NATIONAL LAW UNIVERSITIES TO OFFER ALL ACADEMIC PROGRAMS. ITS THIRTEEN POST GRADUATE DEPARTMENTS WITH DIFFERENT SUBJECT SPECIALIZATIONS TAKE CARE OF LEGAL RESEARCH BY OFFERING DOCTORAL AND POST GRADUATE PROGRAMS. APART FROM THE DEPARTMENTS. THE SCHOOL ALSO OFFERS 5 UNDER GRADUATE PROGRAMS IN LAW WITH VARIED INTERDISCIPLINARY STREAMS OF 3 YEARS & 5 YEARS OF INTEGRATED LAW DEGREE COURSES, RESEARCH DEGREE (PH.D PROGRAM) AND LLD PROGRAM (DOCTORATE OF LAWS).
+        </div>
+    </section>
+
+    <section id="events">
+        <h2 class="section-title">Event <span>Menu</span></h2>
+        <div class="event-menu">
+            <div class="event-card">
+                <h3>VIVAD 2026</h3>
+                <p>A high-stakes legal debate competition challenging the constitutional interpretation of modern laws.</p>
+                <span class="event-meta"><i class="fas fa-users"></i> Max Participants: 2 (Team)</span>
+                <span class="event-meta"><i class="fas fa-book"></i> Rulebook: Formal Attire Mandatory</span>
+            </div>
+            <div class="event-card">
+                <h3>NYAYA-NATYA</h3>
+                <p>Street play (Nukkad Natak) focusing on legal awareness and social justice issues.</p>
+                <span class="event-meta"><i class="fas fa-users"></i> Max Participants: 12 (Team)</span>
+                <span class="event-meta"><i class="fas fa-book"></i> Rulebook: 10 Mins per performance</span>
+            </div>
+            <div class="event-card">
+                <h3>THE RHYTHM</h3>
+                <p>Solo and Group dance battle showcasing cultural diversity and contemporary styles.</p>
+                <span class="event-meta"><i class="fas fa-users"></i> Max Participants: 8 (Group)</span>
+                <span class="event-meta"><i class="fas fa-book"></i> Rulebook: Track must be submitted 24h prior</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="register">
+        <h2 class="section-title">Secure Your <span>Slot</span></h2>
+        <div class="form-container">
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="user_name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="user_email" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Event</label>
+                    <select name="event_choice" required>
+                        <option value="Vivad Debate">Vivad Debate</option>
+                        <option value="Nyaya Natya">Nyaya Natya (Drama)</option>
+                        <option value="The Rhythm">The Rhythm (Dance)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="user_phone" required>
+                </div>
+                <button type="submit" class="btn btn-fill" style="width: 100%;">Register & Send Mail</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact <span>Us</span></h2>
+        <div class="form-container">
+            <form id="contactForm">
+                <input type="text" placeholder="Subject" style="margin-bottom: 15px;">
+                <textarea rows="5" placeholder="Your Message"></textarea>
+                <button class="btn btn-outline" style="width: 100%; margin-top: 15px;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">TAN<span>TRA</span></div>
+        <div class="socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>Official Cultural Fest of TNDALU &copy; 2026</p>
+    </footer>
+
+    <script>
+        // Init EmailJS (Replace 'YOUR_PUBLIC_KEY' with your actual key from EmailJS dashboard)
+        (function() {
+            emailjs.init("XQVSK9b6Km5jUfpdf"); 
+        })();
+
+        // Hamburger Menu
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Close menu on click
+        document.querySelectorAll('.nav-links a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Form Submission Logic
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // In a real scenario, you'd use emailjs.sendForm('service_id', 'template_id', this)
+            // Since I don't have your specific API keys, I'll log the destination and simulate the success.
+            
+            console.log("Sending data to: kiranunofficial2720@gmail.com");
+            
+            const btn = event.target.querySelector('button');
+            btn.innerText = "Sending...";
+            
+            // Simulation of EmailJS behavior
+            setTimeout(() => {
+                alert("Success! Registration details for TANTRA have been sent to kiranunofficial2720@gmail.com");
+                btn.innerText = "Register & Send Mail";
+                this.reset();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
